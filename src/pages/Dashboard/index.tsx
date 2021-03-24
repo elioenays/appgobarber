@@ -38,6 +38,10 @@ const Dashboard: React.FC = () => {
     });
   }, []);
 
+  const navigateToProfile = useCallback(() => {
+    signOut();
+  }, [signOut]);
+
   const handleSelectProvider = useCallback(
     (providerId: string) => {
       navigation.navigate('AppointmentDatePicker', { providerId });
@@ -53,7 +57,7 @@ const Dashboard: React.FC = () => {
           <UserName>{user.name}</UserName>
         </HeaderTitle>
 
-        <ProfileButton onPress={() => navigation.navigate('Profile')}>
+        <ProfileButton onPress={navigateToProfile}>
           <UserAvatar source={{ uri: user.avatar_url }} />
         </ProfileButton>
       </Header>
